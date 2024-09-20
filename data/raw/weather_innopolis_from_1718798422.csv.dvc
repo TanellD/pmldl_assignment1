@@ -1,0 +1,5 @@
+outs:
+- md5: e45c4da811795c11d5ebc3c84284d106
+  size: 133371
+  hash: md5
+  path: weather_innopolis_from_1718798422.csv
