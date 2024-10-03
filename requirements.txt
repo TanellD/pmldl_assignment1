@@ -8,3 +8,5 @@ fastapi[standard]
 pydantic
 numpy
 dvc
+apache-airflow
+mlflow

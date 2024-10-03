@@ -16,13 +16,13 @@ from sklearn.pipeline import Pipeline
 
 PROJECT = os.environ['PROJECT']
 
-
+# read the train and test data
 def read_train_test(path):
     train = pd.read_csv(f'{PROJECT}/data/preprocessed/train_data.csv')
     test = pd.read_csv(f'{PROJECT}/data/preprocessed/test_data.csv')
     return train, test
 
-
+# preprocess the data and return the fitted preprocessor
 def preprocess(train_test):
     train, test = train_test
     cat_columns = ['weather_now']
@@ -42,7 +42,7 @@ def preprocess(train_test):
     X_test_transformed = preprocessor.transform(X_test)
     return (X_train_transformed, y_train, X_test_transformed, y_test), preprocessor
 
-
+# train the model and log it with its metrics to mlflow
 def train(data, preprocessor):
     # Enable autlogging
     mlflow.set_tracking_uri("http://127.0.0.1:5000")

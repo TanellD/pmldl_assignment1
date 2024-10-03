@@ -6,11 +6,12 @@ from typing import List
 import numpy as np
 import os
 
-
+# get path to the model from environment
 MODEL_PATH = os.environ["MODEL"]
+# columns in data
 columns = ["temp", "feels_like", "temp_min", "temp_max", "pressure", "humidity", "clouds", "wind_speed", "wind_deg", "weather_now"]
 
-
+# class to parse the json to df
 class Item(BaseModel):
     temp: float
     feels_like: float
@@ -24,7 +25,9 @@ class Item(BaseModel):
     weather_now: str
 
 app = FastAPI()
+# best threshold based on learning
 best_treshold = 0.25252525252525254
+# load the model
 with open(MODEL_PATH, 'rb') as f:
     model = pickle.load(f)
 
